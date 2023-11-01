@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jalbiser <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/01 11:23:01 by jalbiser          #+#    #+#             */
+/*   Updated: 2023/11/01 11:23:08 by jalbiser         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "libft.h"
 #include <stdlib.h>
 
-int		ft_words(char *s, int c)
+int	ft_words(char *s, int c)
 {
 	int	i;
 	int	words;
@@ -24,7 +35,7 @@ int		ft_words(char *s, int c)
 	return (words);
 }
 
-void	ft_freeSplit(char **result, int words)
+void	ft_freesplit(char **result, int words)
 {
 	int	i;
 
@@ -54,7 +65,7 @@ char	**ft_all(char *s, char **result, int words, char c)
 		result[i] = (char *)malloc(sizeof(char) * (letter + 1));
 		if (!result[i])
 		{
-			ft_freeSplit(result, i);
+			ft_freesplit(result, i);
 			return (NULL);
 		}
 		j = 0;
@@ -77,5 +88,5 @@ char	**ft_split(char const *s, char c)
 	result = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!result)
 		return (NULL);
-	return(ft_all((char *)s, result, words, c));
+	return (ft_all((char *)s, result, words, c));
 }

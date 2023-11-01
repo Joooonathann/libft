@@ -1,13 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jalbiser <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/01 11:29:00 by jalbiser          #+#    #+#             */
+/*   Updated: 2023/11/01 12:37:29 by jalbiser         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "libft.h"
 #include <stdlib.h>
 
 int	ft_len(int n)
 {
 	int	len;
-
-	len = 1;
-	while (n /= 10)
+	
+	len = 0;
+	while (n > 0)
+	{
+		n /= 10;
 		len++;
+	}
 	return (len);
 }
 
@@ -16,8 +30,8 @@ char	*ft_result(int n, int len, int sign)
 	char	*str;
 
 	str = (char *)malloc((len + 1) * sizeof(char));
-    if (!str)
-        return (NULL);
+	if (!str)
+		return (NULL);
     str[len] = '\0';
     if (n < 0)
     {   
@@ -26,8 +40,8 @@ char	*ft_result(int n, int len, int sign)
     }   
     while (len-- > sign)
     {   
-        str[len] = n % 10 + '0';
-        n /= 10; 
+		str[len] = n % 10 + '0';
+		n /= 10;
     }   
 	return (str);
 }
@@ -42,7 +56,7 @@ char	*ft_itoa(int n)
 	{
 		str = (char *)malloc((12) * sizeof(char));
 		if (!str)
-			return 0;
+			return (0);
 		ft_strlcpy(str, "-2147483648", 12);
 		return (str);
 	}
@@ -56,4 +70,3 @@ char	*ft_itoa(int n)
 		len = ft_len(n);
 	return (ft_result(n, len, sign));
 }
-

@@ -6,12 +6,18 @@
 /*   By: jalbiser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:44:18 by jalbiser          #+#    #+#             */
-/*   Updated: 2023/10/26 10:09:27 by jalbiser         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:48:45 by jalbiser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
+
+typedef struct s_list
+{
+	void *content;
+	struct s_list *next;
+} t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int i);
@@ -47,5 +53,7 @@ void	ft_putnbr_fd(int n, int fd);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
 
 #endif
