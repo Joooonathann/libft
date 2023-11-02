@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalbiser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 10:44:18 by jalbiser          #+#    #+#             */
-/*   Updated: 2023/10/23 08:08:04 by jalbiser         ###   ########.fr       */
+/*   Created: 2023/11/01 13:20:24 by jalbiser          #+#    #+#             */
+/*   Updated: 2023/11/01 13:26:14 by jalbiser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-static int	ft_isspace(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\v'
-		|| c == '\f' || c == '\r')
-		return (1);
-	return (0);
-}
-
-int	ft_atoi(const char *str)
+int	ft_lstsize(t_list *lst)
 {
 	int	i;
-	int	sign;
-	int	result;
 
 	i = 0;
-	sign = 1;
-	result = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	while (lst != NULL)
 	{
-		if (str[i] == '-')
-			sign = -1;
+		lst = lst->next;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-		result = (result * 10) + (str[i++] - '0');
-	return (result * sign);
+	return (i);
 }

@@ -12,7 +12,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int	ft_words(char *s, int c)
+static int	ft_words(char *s, int c)
 {
 	int	i;
 	int	words;
@@ -35,7 +35,7 @@ int	ft_words(char *s, int c)
 	return (words);
 }
 
-void	ft_freesplit(char **result, int words)
+static void	ft_freesplit(char **result, int words)
 {
 	int	i;
 
@@ -48,7 +48,7 @@ void	ft_freesplit(char **result, int words)
 	free(result);
 }
 
-char	**ft_all(char *s, char **result, int words, char c)
+static char	**ft_all(char *s, char **result, int words, char c)
 {
 	int	i;
 	int	letter;

@@ -1,0 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jalbiser <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/02 12:26:34 by jalbiser          #+#    #+#             */
+/*   Updated: 2023/11/02 14:47:26 by jalbiser         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "libft.h"
+#include <stdlib.h>
+
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+t_list	*begin;
+	t_list	*work;
+
+	if (lst != NULL && f != NULL)
+	{
+		begin = ft_lstnew(f(lst->content));
+		work = begin;
+		while (lst->next)
+		{
+			lst = lst->next;
+			if ((work->next = ft_lstnew(ft_strdup(f(lst->content)))) == NULL)
+			{
+				ft_lstclear(&begin, del);
+				return (NULL);
+			}
+			work = work->next;
+		}
+		return (begin);
+	}
+	return (NULL);
+
+}
