@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalbiser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 08:03:09 by jalbiser          #+#    #+#             */
-/*   Updated: 2023/11/03 17:15:12 by jalbiser         ###   ########.fr       */
+/*   Created: 2023/11/03 16:57:51 by jalbiser          #+#    #+#             */
+/*   Updated: 2023/11/03 17:04:25 by jalbiser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int ft_memcmp(const void *p1, const void *p2, size_t size)
+void	*ft_memchr(const void *mb, int s, size_t size)
 {
-    unsigned char   *s1;
-    unsigned char   *s2;
-    size_t          i;
+	unsigned char	*mbs;
+	unsigned char	sc;
+	size_t			i;
 
-    s1 = (unsigned char *) p1;
-    s2 = (unsigned char *) p2; 
-    i = 0;
-    while (i < size)
-    {
-        if (s1[i] < s2[i])
-            return (-1);
-        else if (s1[i] > s2[i])
-            return (1);
-        i++;
-    }   
-    return (0); 
+	i = 0;
+	mbs = (unsigned char *) mb;
+	sc = (unsigned char) s;
+	while (i < size)
+	{
+		if (mbs[i] == sc)
+			return ((void *)(mbs + i));
+		i++;
+	}
+	return (NULL);
 }

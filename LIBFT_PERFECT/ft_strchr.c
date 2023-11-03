@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalbiser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 08:03:09 by jalbiser          #+#    #+#             */
-/*   Updated: 2023/11/03 17:15:12 by jalbiser         ###   ########.fr       */
+/*   Created: 2023/11/03 15:56:44 by jalbiser          #+#    #+#             */
+/*   Updated: 2023/11/03 16:04:04 by jalbiser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int ft_memcmp(const void *p1, const void *p2, size_t size)
+char	*ft_strchr(const char *str, int s)
 {
-    unsigned char   *s1;
-    unsigned char   *s2;
-    size_t          i;
+	size_t	i;
 
-    s1 = (unsigned char *) p1;
-    s2 = (unsigned char *) p2; 
-    i = 0;
-    while (i < size)
-    {
-        if (s1[i] < s2[i])
-            return (-1);
-        else if (s1[i] > s2[i])
-            return (1);
-        i++;
-    }   
-    return (0); 
+	i = 0;
+	while (str[i] != (char) s)
+	{
+		if (str[i] == '\0')
+			return (NULL);
+		i++;
+	}
+	return ((char *)(str + i));
 }

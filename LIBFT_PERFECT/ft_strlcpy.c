@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalbiser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 08:03:09 by jalbiser          #+#    #+#             */
-/*   Updated: 2023/11/03 17:15:12 by jalbiser         ###   ########.fr       */
+/*   Created: 2023/11/03 13:42:25 by jalbiser          #+#    #+#             */
+/*   Updated: 2023/11/03 14:57:42 by jalbiser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int ft_memcmp(const void *p1, const void *p2, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-    unsigned char   *s1;
-    unsigned char   *s2;
-    size_t          i;
+	size_t	i;
 
-    s1 = (unsigned char *) p1;
-    s2 = (unsigned char *) p2; 
-    i = 0;
-    while (i < size)
-    {
-        if (s1[i] < s2[i])
-            return (-1);
-        else if (s1[i] > s2[i])
-            return (1);
-        i++;
-    }   
-    return (0); 
+	if (!dest || !src || size == 0)
+		return (ft_strlen(src));
+	i = 0;
+	while (src[i] != '\0' && i < (size - 1))
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (ft_strlen(src));
 }
