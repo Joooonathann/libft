@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalbiser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,24 +11,32 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+static int	ft_isspace(char c)
 {
-	size_t	i;
-	size_t	s;
+	if (c == ' ' || c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r')
+		return (1);
+	return (0);
+}
 
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	sign;
+	int	result;
+	
 	i = 0;
-	if (*little == '\0')
-		return ((char *)big);
-	while ((big[i] != '\0') && (i < len))
+	sign = 1;
+	result = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		s = 0;
-		while ((big[i + s] == little[s]) && ((i + s) < len))
-		{
-			if (little[s + 1] == '\0')
-				return ((char *)&big[i]);
-			s++;
-		}
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	return (NULL);
+	while (str[i] >= '0' && str[i] <= '9')
+		result = (result * 10) + (str[i++] - '0')
+	return (result * sign);
 }

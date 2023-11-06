@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalbiser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,24 +11,21 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*result;
 	size_t	i;
-	size_t	s;
 
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s + start))
+		len = ft_strlen(s + start);
 	i = 0;
-	if (*little == '\0')
-		return ((char *)big);
-	while ((big[i] != '\0') && (i < len))
-	{
-		s = 0;
-		while ((big[i + s] == little[s]) && ((i + s) < len))
-		{
-			if (little[s + 1] == '\0')
-				return ((char *)&big[i]);
-			s++;
-		}
-		i++;
-	}
-	return (NULL);
+	result = malloc(sizeof(char) * (len + 1));
+	if (!result)
+		return (NULL);
+	while (i < len)
+		dest[i++] = s[start++];
+	dest[i] = '\0';
+	return (dest);
 }

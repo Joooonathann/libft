@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalbiser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,24 +11,15 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strdup(const char *src)
 {
-	size_t	i;
-	size_t	s;
+	size_t	len;
+	char	*result;
 
-	i = 0;
-	if (*little == '\0')
-		return ((char *)big);
-	while ((big[i] != '\0') && (i < len))
-	{
-		s = 0;
-		while ((big[i + s] == little[s]) && ((i + s) < len))
-		{
-			if (little[s + 1] == '\0')
-				return ((char *)&big[i]);
-			s++;
-		}
-		i++;
-	}
-	return (NULL);
+	len = ft_strlen(src) + 1;
+	result = malloc(sizeof(char) * len));
+	if (!result)
+		return (NULL);
+	ft_strlcpy(result, src, len));
+	return(result);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalbiser <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,24 +11,7 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	s;
-
-	i = 0;
-	if (*little == '\0')
-		return ((char *)big);
-	while ((big[i] != '\0') && (i < len))
-	{
-		s = 0;
-		while ((big[i + s] == little[s]) && ((i + s) < len))
-		{
-			if (little[s + 1] == '\0')
-				return ((char *)&big[i]);
-			s++;
-		}
-		i++;
-	}
-	return (NULL);
+	
 }
